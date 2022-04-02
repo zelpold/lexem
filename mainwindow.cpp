@@ -26,5 +26,4 @@ void MainWindow::on_openFileButton_clicked()
             ui->plainTextEdit->appendPlainText(file.readAll());
             file.close();
         }
-
 }

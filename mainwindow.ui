@@ -19,16 +19,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>100</y>
-      <width>831</width>
-      <height>531</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="openFileButton">
     <property name="geometry">
      <rect>
@@ -62,8 +52,67 @@
      </rect>
     </property>
     <property name="text">
-     <string>Таблица Лексем</string>
+     <string>Выполнить анализ</string>
     </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>851</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Исходный файл</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPlainTextEdit" name="plainTextEdit"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Таблица лексем</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QTableWidget" name="tableWidget">
+        <column>
+         <property name="text">
+          <string>Новый столбец</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>лексема</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>значение</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>строка </string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>позиция</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
  </widget>
