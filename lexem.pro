@@ -10,10 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    statemachine.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    statemachine.h
 
 FORMS += \
     mainwindow.ui
