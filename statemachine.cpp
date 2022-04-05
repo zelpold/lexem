@@ -19,6 +19,7 @@ void StateMachine::work(QString text) {
     int state = 2;
     int line = 0;
     int pos = 0;
+    int count = 0;
     for(auto s:std_text) {
         if (buffer == "\n" || buffer == " " || buffer == "\0") buffer="";
         int new_state = getNewState(state, s);
@@ -28,7 +29,8 @@ void StateMachine::work(QString text) {
             emit errorSignal("Ошибка: незакрытый коментарий!");
             return ;
         }
-        if (new_state == 0 && state == 4 && pos == std_text.length()-1) {
+        qDebug() << s << count << std_text.length();
+        if (new_state == 0 && state == 4 && count == std_text.length()-1) {
             emit errorSignal("не законченный оператор присваивания!");
             return ;
         }
@@ -79,6 +81,7 @@ void StateMachine::work(QString text) {
             line++;
             pos = 0;
         }
+        count++;
     }
     if (state == 3) emit errorSignal("Ошибка: незакрытый коментарий!");
     if (state == 4) emit errorSignal("не законченный оператор присваивания!");

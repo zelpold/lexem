@@ -21,6 +21,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_openFileButton_clicked()
 {
+
+    ui->plainTextEdit->clear();
     path = QFileDialog::getOpenFileName();
         QFile file(path);
         QList<QString> path_words  = path.split("/");

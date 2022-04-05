@@ -1,0 +1,2 @@
+T and F; F xor F; 
+Ft:T;
