@@ -12,12 +12,14 @@ SOURCES += \
     lexem.cpp \
     main.cpp \
     mainwindow.cpp \
-    statemachine.cpp
+    statemachine.cpp \
+    synt.cpp
 
 HEADERS += \
     lexem.h \
     mainwindow.h \
-    statemachine.h
+    statemachine.h \
+    synt.h
 
 FORMS += \
     mainwindow.ui

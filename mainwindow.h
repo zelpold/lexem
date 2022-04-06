@@ -6,6 +6,7 @@
 #include <QList>
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QTreeWidget>
 #include "lexem.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,10 +27,12 @@ private slots:
     void on_openFileButton_clicked();
 
     void on_lexemButton_clicked();
+    void getTree(QMap<int, QString>, QList<int> operations, QTreeWidgetItem * item);
 
 private:
     QString path;
     Ui::MainWindow *ui;
+    QList<int>::Iterator operations_it;
 
 };
 #endif // MAINWINDOW_H

@@ -3,6 +3,7 @@
 #include "statemachine.h"
 
 #include <QMessageBox>
+#include "Synt.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -60,6 +61,51 @@ void MainWindow::on_lexemButton_clicked()
     }
     ui->tableWidget->resizeColumnsToContents();
     delete state_machine;
+    Synt * synt = new Synt();
+    synt->Work(lexems);
+    QMap<int,QString> rules = synt->back_rules;
+    ui->treeWidget->clear();
+    QTreeWidgetItem *topLevelItem=new QTreeWidgetItem(ui->treeWidget);
+    ui->treeWidget->addTopLevelItem(topLevelItem);
+    topLevelItem->setText(0,"S");
+    QList<int> operations = synt->getOperations();
+    operations_it = operations.begin();
+    getTree(rules,operations,topLevelItem);
+    delete synt;
+}
+
+void MainWindow::getTree(QMap<int, QString> rules, QList<int> operations,   QTreeWidgetItem *item)
+{
+    if (operations_it!=operations.end()){
+
+        QString str = rules[*operations_it];
+        QStringList lexems = str.split(' ');
+        QList<QTreeWidgetItem *> items;
+        for (auto i: lexems){
+            QTreeWidgetItem *new_item=new QTreeWidgetItem(item);
+            //        // укажем текст итема
+            new_item->setText(0,i);
+            if (i == "S"){
+                items.push_front(new_item);
+            }
+        }
+        for (auto i: items){
+            operations_it++;
+            getTree(rules,operations,i);
+        }
+    }
+    // создаем новый итем (пусть сначала базовый)
+//        QTreeWidgetItem *topLevelItem=new QTreeWidgetItem(ui->treeWidget);
+//        // вешаем его на наше дерево в качестве топ узла.
+//        ui->treeWidget->addTopLevelItem(topLevelItem);
+//        // укажем текст итема
+//        topLevelItem->setText(0,"S");
+//        // создаем новый итем и сразу вешаем его на наш базовый
+//        QTreeWidgetItem *item=new QTreeWidgetItem(topLevelItem);
+//        // укажем текст итема
+//        item->setText(0,"Под итем");
+
+
 }
 
 void MainWindow::errorMessage(QString str)
